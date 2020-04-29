@@ -5,6 +5,9 @@ import { getIconData, getIconDataSync } from "@ui5/webcomponents-base/dist/SVGIc
 import createStyleInHead from "@ui5/webcomponents-base/dist/util/createStyleInHead.js";
 import { fetchI18nBundle, getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import IconTemplate from "./generated/templates/IconTemplate.lit.js";
+import {
+	ICON_ACCESSIBLE_NAME,
+} from "./generated/i18n/i18n-defaults.js";
 
 // Styles
 import iconCss from "./generated/themes/Icon.css.js";
