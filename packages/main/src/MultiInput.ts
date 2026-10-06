@@ -377,6 +377,7 @@ class MultiInput extends Input implements IFormInputElement {
 
 		if (e.target === inputDomRef) {
 			if (wasTokenFocused) {
+				this._preventPreviousValueUpdate = true; // returning from token — keep previousValue as the pre-typing baseline
 				this.focused = true;
 				this.open = true;
 				this._inputIconFocused = false;
