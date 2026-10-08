@@ -754,7 +754,11 @@ class Input extends UI5Element implements SuggestionComponent, IFormInputElement
 	}
 
 	onBeforeRendering() {
-		if (this.focused && !this.isTyping && !this._preventPreviousValueUpdate && this.value !== this.previousValue) {
+		// Sync previousValue when the value was changed externally (programmatically) while focused.
+		// Skip if the user typed the current value themselves (typedInValue tracks user input) — that
+		// value is a pending change and previousValue must stay at the pre-typing baseline.
+		const hasPendingUserChange = this.typedInValue !== "" && this.typedInValue === this.value;
+		if (this.focused && !this.isTyping && !this._preventPreviousValueUpdate && this.value !== this.previousValue && !hasPendingUserChange) {
 			this.previousValue = this.value;
 		}
 		this._preventPreviousValueUpdate = false;
